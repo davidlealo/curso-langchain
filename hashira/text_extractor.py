@@ -9,6 +9,16 @@ import requests
 from termcolor import colored
 from utils import create_dir, load_config, remove_existing_file
 
+from dotenv import load_dotenv
+import os
+
+load_dotenv()  # carga .env
+github_token = os.getenv("GITHUB_TOKEN")
+
+if not github_token:
+    raise ValueError("GITHUB_TOKEN no está configurado en las variables de entorno.")
+
+
 
 def preprocess_text(text: str) -> str:
     """
